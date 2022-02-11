@@ -54,10 +54,10 @@ class _MyAppState extends State<MyApp> {
     TfliteAudio.loadModel(
       // numThreads: this.numThreads,
       // isAsset: this.isAsset,
-      inputType: this.inputType,
-      outputRawScores: this.outputRawScores,
-      model: this.model,
-      label: this.label,
+      inputType: inputType,
+      outputRawScores: outputRawScores,
+      model: model,
+      label: label,
     );
   }
 
@@ -65,10 +65,10 @@ class _MyAppState extends State<MyApp> {
   /// Uncomment the parameters below if you wish to adjust the values
   void getResult() {
     result = TfliteAudio.startAudioRecognition(
-      sampleRate: this.sampleRate,
-      recordingLength: this.recordingLength,
-      bufferSize: this.bufferSize,
-      numOfInferences: this.numOfInferences,
+      sampleRate: sampleRate,
+      recordingLength: recordingLength,
+      bufferSize: bufferSize,
+      numOfInferences: numOfInferences,
       // detectionThreshold: this.detectionThreshold,
       // averageWindowDuration: this.averageWindowDuration,
       // minimumTimeBetweenSamples: this.minimumTimeBetweenSamples,
@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
   //fetches the labels from the text file in assets
   Future<List<String>> fetchLabelList() async {
     List<String> _labelList = [];
-    await rootBundle.loadString(this.label).then((q) {
+    await rootBundle.loadString(label).then((q) {
       for (String i in LineSplitter().convert(q)) {
         _labelList.add(i);
       }
